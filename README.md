@@ -122,6 +122,19 @@ CIFAR10 vs. SVHN:
 <!-- modified: ODIN, DE -->
 
 
+<!-- ## Citation
+If you find this repository helpful, please cite:
+```
+@misc{Haiwen2020,
+  author = {Haiwen Huang, Lulu Wang, Sishuo Chen, Xinyu Zhou, Bin Dong},
+  title = {Feature Space Singularity for Out-of-Distribution Detection},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/megvii-research/FSSD_OoD_Detection}},
+  commit = {75e4467d9d6fc7102d32e49f01418413a7b65bea}
+}
+``` -->
 
 ## Contributing
 
