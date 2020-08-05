@@ -138,4 +138,4 @@ If you find this repository helpful, please cite:
 
 ## Contributing
 
-The usage and contribution to this repository is under Apache 2.0 licence.
+The usage and contribution to this repository is under MIT licence.

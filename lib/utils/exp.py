@@ -12,13 +12,8 @@ from loguru import logger
 import torchvision.models as models
 from lib.model.resnet_imagenet import resnet34
 from lib.model import resnet, lenet
-from lib.model.facerec import resnet as facerec_resnet
-from lib.model.facerec import resnet_wo_head as facerec_resnet_wo_head
-from lib.model.rnn import BiRNN
 from lib.model import resnet_imagenet
-from lib.dataLoader import getTargetDataSet # TODO: test all dataset results
-
-from lib.inference import MCDropout
+from lib.dataLoader import getTargetDataSet 
 import random
 
 
