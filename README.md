@@ -1,8 +1,7 @@
 # Feature Space Singularity for Out-of-Distribution Detection
 
-This repository is the official implementation of [Feature Space Singularity for Out-of-Distribution Detection](). 
+This repository is the implementation of [Feature Space Singularity for Out-of-Distribution Detection](). 
 
-The paper is still in the reviewing process of Neurips 2020.
 
 ![Alt text](pics/fssd_img1.jpg?raw=true "Title")
 
