@@ -59,7 +59,13 @@ from lib.metric import get_metrics, train_lr
 
 # ----- Calcualte FSS -----
 feature_dim_list,_ = get_feature_dim_list(model, img_size, inp_channel, flat=True)
-fss = compute_fss(model, len(feature_dim_list), img_size, inp_channel)
+print(feature_dim_list)
+if args['ind'] != 'genomics': 
+    # Calulate FSS using noise for image datasets
+    fss = compute_fss(model, len(feature_dim_list), img_size, inp_channel, )
+else:  
+    # Calculate FSS using the center of validation data features for genomics dataset
+    fss = compute_fss(model, len(feature_dim_list), img_size, inp_channel, ind_dataloader_val_for_train, feature_dim_list, batch_size)
 layer_indexs = list(range(len(feature_dim_list)))
 
 # ----- Calculate best magnitude for input pre-processing -----

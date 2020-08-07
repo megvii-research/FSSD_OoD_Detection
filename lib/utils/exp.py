@@ -12,8 +12,9 @@ from loguru import logger
 import torchvision.models as models
 from lib.model.resnet_imagenet import resnet34
 from lib.model import resnet, lenet
-from lib.model import resnet_imagenet
+from lib.model.rnn import BiRNN
 from lib.dataLoader import getTargetDataSet 
+from lib.dataLoader.genomics import getGenomicsDataSet
 import random
 
 
@@ -22,6 +23,7 @@ key2model_path = {
     "cifar10_resnet": "pre_trained/resnet_cifar10.pth",
     "fmnist_lenet_oe"       : "pre_trained/lenet_fmnist_oe.pth",
     "cifar10_resnet_oe"     : "pre_trained/resnet_cifar10_oe.pth",
+    "genomics_rnn": "pre_trained/rnn_genomics.pth",
 }
 
 
@@ -29,6 +31,7 @@ key2model_path = {
 key2model_arch = {
     "cifar10_resnet": resnet.ResNet34(num_c=10),
     "fmnist_lenet": lenet.LeNet(),
+    "genomics_rnn": BiRNN(hidden_dim=1000, num_layers=2),
 }
 
 def get_modeldir_ens(ind, model_arch):
@@ -65,6 +68,7 @@ def get_mean(ind):
         "fmnist": (0.2860,),
         "svhn": (0.4376821046090723, 0.4437697045639686, 0.4728044222297267),
         "mnist": (0.1307, ),
+        "genomics": None,
     }[key]
 
 def get_std(ind):
@@ -74,35 +78,9 @@ def get_std(ind):
         "fmnist": (0.3530,),
         "mnist": (0.3081,),
         "svhn": (0.19803012447157134, 0.20101562471828877, 0.19703614172172396),
+        "genomics": None,
     }[key]
 
-
-def get_raw_transform(ind): 
-    """
-    transformation without normalization
-    for image corruption experiments
-    """
-    key = ind
-    return {
-        "cifar10": transforms.Compose([transforms.Resize(get_img_size(key)), transforms.ToTensor()]),
-        "svhn": transforms.Compose([transforms.Resize(get_img_size(key)), transforms.ToTensor()]),
-        "fmnist": transforms.Compose([transforms.ToTensor()]),
-        "mnist": transforms.Compose([transforms.ToTensor() ]),
-    }[key]
-
-
-def get_normalize_transform(ind):
-    """
-    normalization transformation
-    for image corruption experiments
-    """
-    key = ind
-    return {
-        "cifar10": transforms.Compose([transforms.Normalize(get_mean(key), get_std(key)), ]),
-        "svhn": transforms.Compose([transforms.Normalize(get_mean(key), get_std(key)), ]),
-        "fmnist": transforms.Compose([transforms.Normalize(get_mean(key), get_std(key)), ]),
-        "mnist": transforms.Compose([transforms.Normalize(get_mean(key), get_std(key)), ]),
-    }[key]
 
 
 def get_transform(ind):
@@ -112,6 +90,7 @@ def get_transform(ind):
         "svhn": transforms.Compose([transforms.Resize(get_img_size(key)), transforms.ToTensor(), transforms.Normalize(get_mean(key), get_std(key)),]),
         "fmnist": transforms.Compose([transforms.ToTensor(), transforms.Normalize(get_mean(key), get_std(key)),]),
         "mnist": transforms.Compose([transforms.ToTensor(), transforms.Normalize(get_mean(key), get_std(key)),]),
+        "genomics": None,
     }[key]
 
 
@@ -119,7 +98,15 @@ def get_dataloader(dataset_name, transform, type, dataroot='/data/datasets', bat
     assert type in ["train", "test"]
     key = dataset_name
     if key in ['cifar10', 'svhn', 'fmnist', 'mnist']:    
-        dataloader = getTargetDataSet(key, batch_size, transform, dataroot, split=type)   
+        dataloader = getTargetDataSet(key, batch_size, transform, dataroot, split=type)
+    elif key == "genomics":
+        if type == "train":
+            dataloader = getGenomicsDataSet(batch_size, transform, "train", dataroot)
+        else:
+            dataloader = getGenomicsDataSet(batch_size, transform, "ind_test", dataroot)
+    elif key == "genomics_ood":
+        assert type == "test"
+        dataloader = getGenomicsDataSet(batch_size, transform, "ood_test", dataroot)   
     else:
         print(key)
         raise NotImplementedError
@@ -132,6 +119,7 @@ def get_img_size(ind):
         "fmnist": 28,
         "mnist": 28,
         "svhn": 32,
+        "genomics": -1,
     }[key]
 
 
@@ -142,4 +130,5 @@ def get_inp_channel(ind):
         "fmnist": 1,
         "mnist": 1,
         "svhn": 3,
+        "genomics": -1,
     }[key]

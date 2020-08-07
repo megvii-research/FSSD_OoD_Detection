@@ -10,19 +10,41 @@ import torch.nn.functional as F
 
 from lib.metric import get_metrics, train_lr
 
-def compute_fss(model, n_layers, img_size, inp_channel):
+def compute_fss(model, n_layers, img_size, inp_channel, dataloader=None, feature_dim_list=None, batch_size=None):
     model.eval()
     model = model.cuda()
-    n = 100
-    noise_imgs = np.random.randint(0,255,(n, inp_channel, img_size, img_size),'uint8')
-    noise_imgs = torch.Tensor(noise_imgs).cuda()
-    noise_imgs = (noise_imgs - 127.5) / 255
-
-    with torch.no_grad():
-        try:
-            fss = model.mean_feat_list(noise_imgs)
-        except:
-            fss = model.module.mean_feat_list(noise_imgs)
+    if not dataloader:
+        n = 100
+        imgs = np.random.randint(0,255,(n, inp_channel, img_size, img_size),'uint8')
+        imgs = torch.Tensor(imgs).cuda()
+        imgs = (imgs - 127.5) / 255        
+        with torch.no_grad():
+            try:
+                fss = model.mean_feat_list(imgs)
+            except:
+                fss = model.module.mean_feat_list(imgs)
+    else:
+        total_num = len(dataloader.dataset)
+        FSS = [torch.zeros((total_num, int(feature_dim))).cuda() for feature_dim in feature_dim_list]
+        start = 0
+        end = min(batch_size, total_num)
+        for data in dataloader:
+            if type(data) in [tuple, list]:
+                imgs = data[0]
+            else:
+                imgs = data
+            imgs = imgs.cuda()
+            with torch.no_grad():
+                try:
+                    _, feats = model.feature_list(imgs)
+                except:
+                    _, feats = model.module.feature_list(imgs)
+            for i in range(len(FSS)):
+                FSS[i][start:end, :] = feats[i]
+            start += batch_size
+            end = min(total_num, end+batch_size)
+        fss = [all_fss.mean(dim=0, keepdim=True) for all_fss in FSS]
+        
     return fss
 
 def get_FSS_score_ensem(model, dataloader, fss, layer_indexs):
