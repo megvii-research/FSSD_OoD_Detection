@@ -121,7 +121,7 @@ CIFAR10 vs. SVHN:
 <!-- modified: ODIN, DE -->
 
 
-<!-- ## Citation
+## Citation
 If you find this repository helpful, please cite:
 ```
 @misc{Haiwen2020,
@@ -133,8 +133,9 @@ If you find this repository helpful, please cite:
   howpublished = {\url{https://github.com/megvii-research/FSSD_OoD_Detection}},
   commit = {75e4467d9d6fc7102d32e49f01418413a7b65bea}
 }
-``` -->
+```
 
 ## Contributing
 
 The usage and contribution to this repository is under MIT licence.
+
