@@ -124,14 +124,13 @@ CIFAR10 vs. SVHN:
 ## Citation
 If you find this repository helpful, please cite:
 ```
-@misc{Haiwen2020,
-  author = {Haiwen Huang, Lulu Wang, Sishuo Chen, Xinyu Zhou, Bin Dong},
-  title = {Feature Space Singularity for Out-of-Distribution Detection},
-  year = {2020},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/megvii-research/FSSD_OoD_Detection}},
-  commit = {75e4467d9d6fc7102d32e49f01418413a7b65bea}
+@misc{huang2020feature,
+      title={Feature Space Singularity for Out-of-Distribution Detection}, 
+      author={Haiwen Huang and Zhihan Li and Lulu Wang and Sishuo Chen and Bin Dong and Xinyu Zhou},
+      year={2020},
+      eprint={2011.14654},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
 }
 ```
 
