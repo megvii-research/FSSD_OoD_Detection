@@ -1,6 +1,6 @@
 # Feature Space Singularity for Out-of-Distribution Detection
 
-This repository is the implementation of the paper [Feature Space Singularity for Out-of-Distribution Detection](https://drive.google.com/file/d/1jP0ViPdIg3w4dgq3M6lUh1osxoc7vxQV/view?usp=sharing). 
+This repository is the implementation of the paper [Feature Space Singularity for Out-of-Distribution Detection](https://arxiv.org/abs/2011.14654). 
 
 
 ![Alt text](pics/fssd_img1.jpg?raw=true "Title")
@@ -21,7 +21,7 @@ In this repository, we implement the following algorithms.
 
 | Algorithm | Paper | Implementation |
 | --------- | ---------- | -------------- |
-| FSSD      |[Feature Space Singularity for Out-of-Distribution Detection](https://drive.google.com/file/d/1jP0ViPdIg3w4dgq3M6lUh1osxoc7vxQV/view?usp=sharing)  |   [test_fss.py](test_fss.py)  |
+| FSSD      |[Feature Space Singularity for Out-of-Distribution Detection](https://arxiv.org/abs/2011.14654)  |   [test_fss.py](test_fss.py)  |
 | Baseline  | [A BASELINE FOR DETECTING MISCLASSIFIED AND OUT-OF-DISTRIBUTION EXAMPLES IN NEURAL NETWORKS](https://arxiv.org/pdf/1610.02136.pdf) |  [test_baseline.py](test_baseline.py)   |
 | ODIN      | [Enhancing The Reliability of Out-of-distribution Image Detection in Neural Networks](https://arxiv.org/abs/1706.02690) |  [test_odin.py](test_odin.py)  |
 | Maha      |  [A Simple Unified Framework for Detecting Out-of-Distribution Samples and Adversarial Attacks](https://arxiv.org/abs/1807.03888)          |  [test_maha.py](test_maha.py)  |
