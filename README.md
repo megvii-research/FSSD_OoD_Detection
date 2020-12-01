@@ -98,7 +98,7 @@ Please download the pre-trained models and put them in `pre_trained` directory
 
 Our model achieves the following performance on :
 
-### [OoD detection benchmarks](https://paperswithcode.com/task/out-of-distribution-detection/latest)
+### [OoD detection benchmarks](https://paperswithcode.com/task/out-of-distribution-detection)
 
 
 FashionMNIST vs. MNIST:
