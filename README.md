@@ -42,9 +42,9 @@ pip install -r requirements.txt
 ```
 
 ## Datasets
-You can download FashionMNIST and CIFAR10 datasets directly from links offered in torchvision. 
-<!-- For other datasets, please download the datasets from [this link](https://drive.google.com/datasets).  -->
-The default dataset root is `/data/datasets/`.  We will add more datasets and corresponding pre-trained models in the future.
+You can download FashionMNIST and CIFAR10 datasets directly from links offered in torchvision. For ImageNet-dogs-non-dogs dataset, please download the dataset from [this link](https://www.dropbox.com/sh/yrfmp7hwa2w9gxz/AAATMrfWNLctPq1vnRa3mtZPa?dl=0) and find the dataset description in this [issue](https://github.com/megvii-research/FSSD_OoD_Detection/issues/1).  (We will add more datasets and corresponding pre-trained models in the future.)
+
+The default dataset root is `/data/datasets/`.  
 
 ## Training
 
@@ -89,7 +89,7 @@ python test_baseline.py --ind fmnist --ood mnist --model_arch lenet --test_oe
 
 You can download pretrained models here:
 
-- [Google cloud links](https://drive.google.com/drive/folders/1S-xv1xnvMrYFtCNomKT8w4k3bPSDwucx?usp=sharing) for models trained on FashionMNIST, CIFAR10 using parameters specified in our supplements.  More pre-trained models will be added in the future.
+- [Google cloud links](https://drive.google.com/drive/folders/1S-xv1xnvMrYFtCNomKT8w4k3bPSDwucx?usp=sharing) for models trained on FashionMNIST, CIFAR10 , ImageNet-dogs-non-dogs-dataset,using parameters specified in our supplements.  More pre-trained models will be added in the future.
 
 Please download the pre-trained models and put them in `pre_trained` directory
 
