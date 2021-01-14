@@ -1,5 +1,6 @@
 # Feature Space Singularity for Out-of-Distribution Detection
 
+
 This repository is the implementation of the paper [Feature Space Singularity for Out-of-Distribution Detection](https://arxiv.org/abs/2011.14654). 
 
 
@@ -95,6 +96,10 @@ Please download the pre-trained models and put them in `pre_trained` directory
 
 
 ## Results
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/feature-space-singularity-for-out-of/out-of-distribution-detection-on-fashion)](https://paperswithcode.com/sota/out-of-distribution-detection-on-fashion?p=feature-space-singularity-for-out-of)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/feature-space-singularity-for-out-of/out-of-distribution-detection-on-cifar-10)](https://paperswithcode.com/sota/out-of-distribution-detection-on-cifar-10?p=feature-space-singularity-for-out-of)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/feature-space-singularity-for-out-of/out-of-distribution-detection-on-imagenet)](https://paperswithcode.com/sota/out-of-distribution-detection-on-imagenet?p=feature-space-singularity-for-out-of)
+
 
 Our model achieves the following performance on :
 
