@@ -129,13 +129,11 @@ CIFAR10 vs. SVHN:
 ## Citation
 If you find this repository helpful, please cite:
 ```
-@misc{huang2020feature,
-      title={Feature Space Singularity for Out-of-Distribution Detection}, 
-      author={Haiwen Huang and Zhihan Li and Lulu Wang and Sishuo Chen and Bin Dong and Xinyu Zhou},
-      year={2020},
-      eprint={2011.14654},
-      archivePrefix={arXiv},
-      primaryClass={stat.ML}
+@inproceedings{huang2021feature,
+  title={Feature Space Singularity for Out-of-Distribution Detection},
+  author={Huang, Haiwen and Li, Zhihan and Wang, Lulu and Chen, Sishuo and Dong, Bin and Zhou, Xinyu},
+  booktitle={Proceedings of the Workshop on Artificial Intelligence Safety 2021 (SafeAI 2021)},
+  year={2021}
 }
 ```
 
